@@ -2,9 +2,9 @@
 
 set -eu
 
-IMAGE="debian:bullseye-slim"
+IMAGE="debian:bookworm-slim"
 TARGET="$(dirname "$0" | xargs realpath)"
-VERSION="v0.12.0"
+VERSION="v0.12.2"
 
 while getopts "v:i:h" opt
 do
@@ -26,7 +26,7 @@ do
 done
 
 main() {
-    docker run --rm --name alacritty-build-$$ \
+    sudo docker run --rm --name alacritty-build-$$ \
                     --volume "$TARGET:/target" \
                     --workdir /target \
                     --env "VERSION=$VERSION" \
